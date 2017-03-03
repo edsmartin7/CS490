@@ -1,5 +1,8 @@
 <?php
 
+//Alpha releaese
+//Compare AFS and Project ID passwords
+
    $username = $_POST['ucid'];
    $password = $_POST['pass'];
   

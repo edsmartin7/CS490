@@ -1,7 +1,9 @@
 <?php
 
+//Add a question to the database
+
    $difficulty = $_POST['difficulty'];
-   $question = $_POST['password'];
+   $question = $_POST['question'];
 
    require_once('config.php');
    extract(dbConfig());
@@ -10,12 +12,12 @@
              VALUES ('$difficulty', '$question')";
       
    $result = $db->query($query); 
-   $row = $result->fetch_assoc();
+   //$row = $result->fetch_assoc();
    
-   if($row){
-      echo "TEST CREATED";
+   if($result){ ///if($row){
+      echo "QUESTION ADDED";
    }else{
-      echo "NOT SUFFICIENT QUESTIONS IN DATABASE";
+      echo "ERROR IN QUERY";
    }
 
 ?>
