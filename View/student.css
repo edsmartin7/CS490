@@ -1,0 +1,14 @@
+#options {
+   width: 300px;
+   border: 5px solid blue;
+   padding: 25px;
+   margin: 25px;
+   box-shadow: 10px 10px 5px #888888;
+}
+
+
+p {
+   font-weight: bold;
+   color: blue;
+}
+
