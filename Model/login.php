@@ -1,10 +1,9 @@
 <?php
 
-   $username = $_POST['username'];
-   $password = $_POST['password'];
-
+   $username = $_POST['ucid'];
+   $password = $_POST['pass'];
    
-   if(isset($_POST['username'],$_POST['password'])){
+   if(isset($_POST['ucid'],$_POST['pass'])){
       require_once('config.php');
       extract(dbConfig());
       $db = new mysqli($host, $user, $pw, $sqldb);
@@ -15,15 +14,21 @@
       $result = $db->query($query); 
       $row = $result->fetch_assoc();
 
-      
+      if($row){
+         $results = array(1, $row['student']);
+	 //echo json_encode($results);
+	 $results;
+      }else{
+         echo "NO ACCOUNT FOUND";
+      }
+
+      /*
       if((int)$row['student'] == 1){
         echo "<br> STUDENt ACCOUNT \n" . $row['student'];
       }else{
          echo "<br> TEACHER ACCOUNT \n";
       }
-
-      //return
-      //echo json_encode($return_arr);
+      */
    }
    
 ?>

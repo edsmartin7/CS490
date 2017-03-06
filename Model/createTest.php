@@ -1,6 +1,6 @@
 <?php
 
-   //$numberOfQuestions = $_Post['numberOfQuestions']
+   $numberOfQuestions = $_Post['numberOfQuestions']
    
    require_once('config.php');
    extract(dbConfig());

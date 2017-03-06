@@ -5,7 +5,7 @@
    margin: 25px;
    box-shadow: 10px 10px 5px #888888;
 }
-
+/*
 .qbox input[type="text"] {
    height: 10px;
    width: 80px;
@@ -13,5 +13,9 @@
 
 .qbox input[type="text"] {
    width: 200px;
+}
+*/
+.answerbox {
+   height: 1000px;
 }
 
