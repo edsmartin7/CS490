@@ -2,8 +2,8 @@
 
    error_reporting(E_ALL);
 
-   $frontURL = "https://web.njit.edu/~em244/Temp/View/login.php";
-   $backURL = "https://web.njit.edu/~em244/Temp/Model/login.php";
+   $frontURL = "https://web.njit.edu/~em244/CS490/View/login.php";
+   $backURL = "https://web.njit.edu/~em244/CS490/Model/login.php";
    $username = $_POST['username'];
    $password = $_POST['password'];
 
@@ -14,7 +14,6 @@
    $result = curl_exec($ch2);
    curl_close($ch2);
    echo $result;
-   //echo "hello world";
 
 ?>
 

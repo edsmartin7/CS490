@@ -4,7 +4,7 @@
    <head>
       <meta charset="UTF-8">
       <title>Login to Start</title>
-      <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+      <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
    <div id="entry">
@@ -25,13 +25,14 @@
          </table>
       </form>
    <?php
-
+ 
+      session_start();
       $username=$_POST['username'];
       $password=$_POST['password'];
       
       $jsonData = array('username'=>$username, 'password'=>$password);
       //$string = http_build_query($jsonData);
-      $url = "https://web.njit.edu/~em244/Temp/Controller/login.php";
+      $url = "https://web.njit.edu/~em244/CS490/Controller/login.php";
       $ch = curl_init($url);
       //$jsonDataEncoded = json_encode($jsonData);
       curl_setopt($ch, CURLOPT_POST, true);
@@ -41,9 +42,16 @@
       $result = curl_exec($ch);
       curl_close($ch);
       
-      echo "\n";
-      echo "LOOK HERE";
-      echo $result;
+      //echo "\n";
+      //echo $result;
+      if($result == 1){
+         session_destroy();//dont destroy until logout???
+	 header("Location:  https://web.njit.edu/~em244/CS490/View/studentMain.html");
+	 exit;
+      }else{
+         session_destroy();//
+         header("Location:  https://web.njit.edu/~em244/CS490/View/teacherMain.php");
+      }
 
    ?>
    </div>
