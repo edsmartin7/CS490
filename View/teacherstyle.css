@@ -11,7 +11,7 @@
 
 #qbox {
    background-color: gray;
-   float: left;
+   float: top;
    margin-right: 20px;
    width: 140px;
    border-right: 2px solid #000;
@@ -23,6 +23,11 @@
    margin: 10px;
    border: 2px dashed #ccc;
    min-height: 170px;
+}
+
+.textInput {
+   height: 100px;
+   width: 300px;
 }
 
 @media screen and (max-width: 400px){
