@@ -7,7 +7,7 @@
 
    $jsonData = array('category'=>$category, 'difficulty'=>$difficulty,
    'question'=>$question);
-   $url="http://web.njit.edu/~em244/CS490/Controller/login.php";
+   $url="http://web.njit.edu/~em244/CS490/Controller/addQuestion.php";
    $ch = curl_init($url);
    //$jsonDataEncoded = json_encode($jsonData);
    curl_setopt($ch, CURLOPT_POST, true);
