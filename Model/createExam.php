@@ -1,15 +1,15 @@
 <?php
 
-   //$testName = $_POST['testName'];
-   $testName = "Bob";
-   //$numberOfQuestions = $_POST['numberOfQuestions']
-   $numberOfQuestions = 5;
+   //$examName = $_POST['examName'];
+   $examName = "Bob";
+   //$examLength = $_POST['examLength']
+   $examLength = 5;
 
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
    $query = "SELECT * FROM questions
-             ORDER BY RAND() LIMIT 5";
+             ORDER BY RAND() LIMIT '$examLength'";
       
    $result = $db->query($query); 
    //$row = $result->fetch_assoc();
@@ -29,7 +29,7 @@
    }
 
    //only have to store the question id's then pull from question db table 
-   $insertion = "INSERT INTO exams (   )
+   $insertion = "INSERT INTO exams (   ) //examID, questionID's, 
                  VALUES (   )";
 
    $created = $db->query($insertion);
