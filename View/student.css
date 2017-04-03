@@ -1,3 +1,4 @@
+/*
 #options {
    width: 300px;
    border: 5px solid blue;
@@ -5,10 +6,58 @@
    margin: 25px;
    box-shadow: 10px 10px 5px #888888;
 }
-
-
 p {
    font-weight: bold;
    color: blue;
+}
+*/
+
+#wrapper {
+   border: 2px solid #000;
+   overflow: hidden;
+}
+
+#wrapper div {
+   min-height: 200px;
+   padding: 10px;  
+}
+
+#topbox {
+   background-color: #90C3D4;
+   float: top;
+   margin-right: 20px;
+   width: 140px;
+   border-right: 2px solid #000;
+}
+
+#availableTests {
+
+}
+
+#gradedTests {
+   background-color: white;
+   overflow: hidden;
+   margin: 10px;
+   border: 2px dashed #ccc;
+   min-height: 170px;
+}
+
+.textInput {
+   height: 100px;
+   width: 300px;
+}
+
+@media screen and (max-width: 400px){
+   #topbox{
+      float: none;
+      margin-right:0;
+      width:auto;
+      border: 0;
+      border-bottom: 2px solid #000;
+   }
+}
+
+p {
+   font-weight: bold;
 }
 
