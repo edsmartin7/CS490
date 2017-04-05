@@ -30,8 +30,14 @@
 	          </tr>
 		  <tr>
 		     <td></td>
-		     <td><input type="submit" name="add_button" value="Add Your Question"></td>
-		  <tr>
+		  </tr>
+	          <tr>
+	    	     <td>Add test cases</td>
+		     <!-- <div id=testcaseform> -->
+                     <td><input type="text" name="testCase" class="textInput" placeholder="Tests"></td>
+                     <td><input type="text" name="testAnswer" class="textInput" placehodler="Solutions"></td>
+		  </tr>
+		  <td><input type="submit" name="add_button" value="Add Your Question"></td>
 	       </table>
 	    </form>
          </div>
@@ -58,9 +64,11 @@
          //include 'teacherFunctions.php';
 	 //echo createQuestion(); 
          //send question
-         $category=$_POST['category'];
-         $difficulty=$_POST['difficulty'];
-         $question=$_POST['question'];
+         $category = $_POST['category'];
+         $difficulty = $_POST['difficulty'];
+         $question = $_POST['question'];
+         $testCase = $_POST['testCase'];
+	 $testAnswer = $_POST['testAnswer'];
 
          if(isset($_POST['category'], $_POST['difficulty'])){
             $jsonData = array('category'=>$category, 'difficulty'=>$difficulty,

@@ -17,3 +17,4 @@ function sendQuestions(){
    xhttp.open("POST", "createTest.php", true); //change php file
    xhttp.send(questionlist);
 }
+
