@@ -2,7 +2,7 @@
 <html>
    <head>
       <title>Welcome Student</title>
-      <!-- <link rel="stylesheet" type="text/css" href="student.css"> -->
+      <link rel="stylesheet" type="text/css" href="student.css">
    </head>
    <body>
       <script src="studentscript.js"></script>
@@ -26,7 +26,7 @@
 	 curl_close($ch2);
          
       ?>
-      <div class="wrapper">
+      <div id="wrapper">
 
          <div id="topbox">
 	    <p>Take a Test</p>
@@ -46,7 +46,7 @@
 	          }
 	       ?>
                <br> 
-	       <input type="submit" name="start_test_button" value="Start Testing">
+	       <input type="submit" name="selectedExam" value="Start Testing">
 	    </form>
          </div>
 
@@ -60,8 +60,7 @@
 		  }
 	       ?>
 	       <br>
-	       <input type="submit" name="see_graded_test_details" value="See
-	       Graded Test Details">
+	       <input type="submit" name="see_graded_test_details" value="See Graded Test Details">
 	    </form>
 	 <div>
       </div>

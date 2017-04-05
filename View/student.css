@@ -1,52 +1,58 @@
 /*
-#options {
-   width: 300px;
-   border: 5px solid blue;
-   padding: 25px;
-   margin: 25px;
-   box-shadow: 10px 10px 5px #888888;
-}
-p {
-   font-weight: bold;
-   color: blue;
+body{
+   background: url('njitpic1.jpg') no-repeat center center fixed;
+   background-size: cover;
 }
 */
 
 #wrapper {
-   border: 2px solid #000;
+   border: 5px dashed black;
    overflow: hidden;
 }
 
+/*
 #wrapper div {
    min-height: 200px;
    padding: 10px;  
 }
+*/
 
 #topbox {
-   background-color: #90C3D4;
-   float: top;
-   margin-right: 20px;
-   width: 140px;
-   border-right: 2px solid #000;
+   width: 250px;
+   height: 150px;
+   margin: auto;
+   border: 5px solid red;
+   background: red;
 }
 
+/*
+*{
+   border: 1px solid red !important;
+}
+*/
 #availableTests {
+   width: 250px;
+   height: 150px;
+   border: 5px solid purple;
+   margin: auto;
 
 }
 
 #gradedTests {
-   background-color: white;
-   overflow: hidden;
-   margin: 10px;
+   width: 250px;
+   height: 150px;
+   margin: auto;
    border: 2px dashed #ccc;
-   min-height: 170px;
+  
 }
 
+/*
 .textInput {
    height: 100px;
    width: 300px;
 }
-
+*/
+/*
 @media screen and (max-width: 400px){
    #topbox{
       float: none;
@@ -56,7 +62,7 @@ p {
       border-bottom: 2px solid #000;
    }
 }
-
+*/
 p {
    font-weight: bold;
 }
