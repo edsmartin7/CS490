@@ -2,26 +2,40 @@
 
 
    //if(isset($_POST['difficulty'], ['category'])){
-   $difficulty = (int)$_POST['difficulty'];
-   $category = $_POST['category'];
-   $question = $_POST['question'];
+   //$difficulty = (int)$_POST['difficulty'];
+   //$category = $_POST['category'];
+   //$question = $_POST['question'];
    //$question = mysql_real_escape_string($_POST['question']);
    //}
+   //$testCase = $_POST['testCase'];
+   //$testAnswer = $_POST['testAnswer'];
+   $difficulty = (int)$_POST['diff'];
+   $category = $_POST['cat'];
+   $question = $_POST['quest'];
+   $returnType = $_POST['returnType'];
+   $methodName = $_POST['methodName'];
+   $argumentName = $_POST['argName'];
+   $argumentType = $_POST['argType'];
+   $testCase = $_POST['testCase'];
+   $testAnswer = $_POST['tcAns'];
+   $prof = $_POST['prof'];
 
-   //echo $difficulty;
-   //echo $category;
-   //echo $question;
-
-   
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
-   $query = "INSERT INTO  questions (difficulty, category, question)
-             VALUES ('$difficulty', '$category', '$question')";
+   $query = "INSERT INTO  testquestions (difficulty, category, question,
+   returnType, methodName, argName, argType, prof)
+             VALUES ('$difficulty', '$category', '$question', '$returnType', '$methodName',
+	     '$argumentName', '$argumentType', '$prof')";
       
    $result = $db->query($query); 
    //$row = $result->fetch_assoc();
 
+   
+   $tests = "INSERT INTO testcases (question, testcase, testanswer)
+             VALUES ('$question', '$testCase', '$testAnswer')";
+   $testresults = $db->query($tests);
+   
    if($result){ ///if($row){
       echo "QUESTION ADDED";
    }else{
