@@ -7,7 +7,7 @@
       <div>
          <?php
 	    //GET all current test's questions
-	    $exam = 'testhello'; //$_GET['selectedExam'];
+	    $exam = $_GET['exam']; //'testhello';
 	    //$questions = array("one", "two", "three");
 	    $examData = array('exam'=>$exam);
 
@@ -26,7 +26,7 @@
 	    <?php
                foreach(json_decode($questions) as $question){
 		     echo "<p>$question</p>
-                        <textarea type='text' name='answer' placeholder='Enter your answer'></textarea>
+                        <textarea type='text' name='answers[".$question."]' placeholder='Enter your answer'></textarea>
 			<br>
 			<button onclick='clear()' >clear answer</button>
 			<br>";

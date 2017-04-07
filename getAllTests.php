@@ -1,9 +1,13 @@
 <?php
 
+   //return all unique tests
+
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
-   $query = "SELECT * FROM testquestions";
+   $query = "SELECT DISTINCT (examName)
+             FROM exams
+             ";
       
    $result = $db->query($query); 
   
@@ -15,10 +19,10 @@
    }
 
    if($all){
-      echo json_encode($all['question']);
+      echo json_encode($all['examName']);
       echo "\n";
    }else{
-      echo "NOT ABLE TO RETURN ALL THE QUESTIONS\n";
+      echo "NOT ABLE TO RETURN ALL THE EXAMS\n";
    }
 
 ?>
