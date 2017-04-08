@@ -1,5 +1,11 @@
 
 <?php
+   session_start();
+   
+?>
+
+
+<?php
  
    //WORKS
    //print_r($_POST['answers']);
@@ -15,8 +21,12 @@
    //create array of questions and send
    $jsonData = array();
    $x=0;
+
+   $_SESSION = 'EDDIE';
+ 
+   $jsonData['test'] = $_SESSION;
    foreach(array_keys($QandA[0]) as $value){
-      $jsonData[$x] = $value;
+      $jsonData['answers'][$x] = $value;
       $x++;
    }
    print_r($jsonData);

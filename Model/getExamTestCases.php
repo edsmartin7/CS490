@@ -7,7 +7,7 @@
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
    
-   
+   $all = array();
    foreach($questions as $question){
          
       $query = "SELECT testcase, testanswer
@@ -15,23 +15,19 @@
 	        WHERE question='$question'";
       
       $result = $db->query($query);
-      //$row = $result->fetch_assoc();
-   
-      while($row = $result->fetch_assoc()){
-         foreach($row as $key=>$value){
-            if(!isset($all[$key])) $all[$key] = array();
-	       $all[$key][] = $value;
-         }
-      }
+      $row = $result->fetch_assoc();
+      $all[$question] = $row;
+     
    }
+
    echo "<br> DATABASE <br>";
    print_r($all);
    /*
    if($all){
-      //echo json_encode($all['examName']);
+      echo json_encode($all);
       echo "\n";
    }else{
-      //echo "NOT ABLE TO RETURN ALL THE EXAMS\n";
+      echo "NOT ABLE TO RETURN SELECTED EXAM TEST CASES \n";
    }
    */
 ?>

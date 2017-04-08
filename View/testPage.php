@@ -21,7 +21,7 @@
             
          ?>
          <p>Currently taking test:  <?php echo $exam; ?></p>
-         <form method="post" action="submitTest.php"> 
+         <form method="post" action="submitTest.php/<?php echo $exam; ?>"> 
 	    <br>
 	    <?php
                foreach(json_decode($questions) as $question){
