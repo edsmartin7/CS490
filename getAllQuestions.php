@@ -1,5 +1,7 @@
 <?php
 
+   //Returns all questions to Teacher's view to add to create a new exam
+
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);

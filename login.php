@@ -1,5 +1,7 @@
 <?php
 
+   //Login functionality for student/professor
+
    $username = $_POST['ucid'];
    $password = $_POST['pass'];
    

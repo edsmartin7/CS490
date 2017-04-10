@@ -6,7 +6,7 @@
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
    $query = "DELETE FROM testquestions 
-             WHERE prof='$prof')";
+             WHERE prof='$prof'";
       
    $result = $db->query($query); 
 

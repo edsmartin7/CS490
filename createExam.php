@@ -1,5 +1,8 @@
 <?php
 
+   //Creates an exam
+   //Add questions for with the key, exam, to a database
+
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);

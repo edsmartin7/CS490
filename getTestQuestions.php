@@ -1,9 +1,8 @@
 <?php
-   //print_r($_POST);
-   //echo "<br>";
+
+   //Returns all the questions for the student to take an exam
+
    $exam = $_POST['exam'];
-   //echo "<br> $exam <br>";
-   
    
    require_once('config.php');
    extract(dbConfig());
@@ -12,7 +11,6 @@
              WHERE examName = '$exam'";
       
    $result = $db->query($query); 
-   //$row = $result->fetch_assoc(); 
    
    while($row = $result->fetch_assoc()){
       foreach($row as $key=>$value){
@@ -21,9 +19,6 @@
       }
    }
    
- 
-   //print_r($all['question']);
-
    if($all){
       echo json_encode($all['question']);
    }else{
