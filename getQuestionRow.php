@@ -7,6 +7,8 @@
    $db = new mysqli($host, $user, $pw, $sqldb);
 
    $question = $_POST['question'];
+   //$question = "Write a java method to find the smallest number among three numbers."; 
+
    $query = "SELECT * FROM testquestions
              WHERE question='$question'";
    $result = $db->query($query); 
@@ -17,12 +19,20 @@
 	     WHERE question='$question'";
 
    $testresult = $db->query($tests);
-   $testrow = $testresult->fetch_assoc();
+   //$testrow = $testresult->fetch_assoc();
+   $row['tests'] = array();
+   $x=0;
+   while($testrow = $testresult->fetch_assoc()){
+      $row['tests'][$x] = $testrow;
+      $x++;
+   }
 
-   $row['tests'] = $testrow;
+   //print_r($row['tests'][0]['testcase']);
 
    if($row){
+      //echo "<pre>";
       echo json_encode($row);
+      //echo "<pre>";
    }else{
       echo "NOT ABLE TO RETURN ALL THE QUESTIONS\n";
    }

@@ -1,5 +1,7 @@
 <?php
 
+   //unused
+
    $student = $_POST['studentName'];
    $exam = $_POST['testName'];
    $question = $_POST['question'];
