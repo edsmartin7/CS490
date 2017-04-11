@@ -25,6 +25,20 @@
    min-height: 170px;
 }
 
+#exambox {
+}
+
+#left {
+   float: left;
+   width: 50%;
+   border: dashed;
+}
+
+#right {
+   float: right;
+   width: 50%;
+   border: dashed;
+}
 .textInput {
    height: 100px;
    width: 300px;

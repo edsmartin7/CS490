@@ -2,7 +2,6 @@
 
    error_reporting(E_ALL);
 
-   $frontURL = "https://web.njit.edu/~em244/CS490/View/login.php";
    $backURL = "https://web.njit.edu/~em244/CS490/Model/login.php";
    $username = $_POST['username'];
    $password = $_POST['password'];

@@ -1,26 +1,29 @@
 
 function showDiv(){
-   document.getElementById('abox').style.display = "block";
-}
+   var div = document.getElementById('abox');
+   if(div.style.display === 'none')
+      div.style.display = 'block';
+   else
+      div.style.display = 'none';
 
-function hideDiv(){
-   //hide when question is submitted
-   document.getElementById('abox').style.display = "none";
 }
 
 function showExamEntry(){
-   document.getElementById('exambox').style.display = "block";
-}
-function hideExamEntry(){
-   document.getElementById('exambox').style.display = "none";
+   var div = document.getElementById('exambox');
+   if(div.style.display === 'none')
+      div.style.display = 'block';
+   else
+      div.style.display = 'none';
+
 }
 
-var counter = 1;
-function addAnotherTest(divName){
-   var newdiv = document.createElement('div');
-   newdiv.innerHTML = "<br><td><input type='text' name='testCase' class='textInput'></td><td><input type='text' name='textAnswer' class='textInput'></td>";
-   document.getElementById(divName).appendChild(newdiv);
-   counter++;
+function addTests(){
+   
+   var current = document.getElementById('tests');
+   var input = document.createElement("div");
+   //input.setAttribute("id", 'tests');
+   input.id = 'tests'; 
+   input.innerHTML = "<input type='text' name='testCase[]' class='textInput' placeholder='Test Case'> <input type='text' name='testAnswer[]' class='textInput' placeholder='Test Answer'>";
+   current.appendChild(input);
 }
-
 
