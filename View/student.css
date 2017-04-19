@@ -6,7 +6,7 @@ body{
 */
 
 #wrapper {
-   border: 5px dashed black;
+   border: 2px dashed black;
    overflow: hidden;
 }
 
@@ -19,10 +19,12 @@ body{
 
 #topbox {
    width: 250px;
-   height: 150px;
+   height: 200px;
    margin: auto;
-   border: 5px solid red;
-   background: red;
+   border: 5px solid purple;
+   /*background: red;*/
+   box-shadow: 10px 10px 5px #888888;
+
 }
 
 /*
@@ -35,15 +37,15 @@ body{
    height: 150px;
    border: 5px solid purple;
    margin: auto;
-
+   box-shadow: 10px 10px 5px #888888;
 }
 
 #gradedTests {
    width: 250px;
    height: 150px;
    margin: auto;
-   border: 2px dashed #ccc;
-  
+   border: 5px solid purple;
+   box-shadow: 10px 10px 5px #888888;   
 }
 
 /*
@@ -65,5 +67,23 @@ body{
 */
 p {
    font-weight: bold;
+}
+
+#currenttest {
+
+   //width: 250px;
+   //height: 200px;
+   margin: auto;
+   border: 5px solid purple;
+   /*background: red;*/
+   box-shadow: 10px 10px 5px #888888;
+   width: 50%;
+   padding: 20px;
+}
+
+#currenttest textarea[type="text"] {
+   width: 500px;
+   height: 100px;
+   
 }
 

@@ -32,8 +32,7 @@
                <p>Difficulty</p>
                <input type="text" name="difficulty" class="textInput">
                <p>Question</p>
-               <input type="text" name="question" class="textInput">
-	       <br>
+               <input type="text" name="question" class="textInput"> 
                <p>Add test cases</p>
 	       <div id="tests">
                   <input type="text" name="testCase[]" class="textInput" placeholder="Test Cases">
@@ -47,21 +46,44 @@
 	 <div id="exambox" style="display:none;">
             <div id='left'>
                <p>Name your Exam</p>
-	       <form method="post" action="/~em244/CS490/View/sendTest.php">
-               <br>
-               <input type="text" name"examName" class="textInput">
-	       <br>
-	       <!-- show selected questions -->
+	       <form method="post" action="sendTest.php">
+                  <br>
+                  <input type="text" name="examName" class="textInput">
+	          <br>
+	          <p>Chosen Questions</p>
+                  <br>
+	          <?php
+		     foreach($_POST['questionList'] as $addQuestion)
+		        echo "<input type='checkbox' name='submitList[]'
+                        value='$addQuestion'> $addQuestion <br>";
+	          ?>
+	          <input type="submit" value="Submit your exam">
+	          <!-- show selected questions -->
+	          <br>
+	          <button>Delete selected Question</button>
+               </form>
 	    </div>
 	    <div id='right'>
-	       <p>Name your exam</p>
+	       <p>Select questions for exam</p>
+	       <form>
+		  <select name="categories" onchange="filterQuestions(this.value)">
+		     <option value="">Filter:</option>
+		     <option value="all">ALL</option>
+		     <option value="statement">Statement</option>
+		     <option value="array">Array</option>
+		     <option value="loop">Loop</option>
+		     <option value="method">Method</option>
+		     <option value="math">Math</option>
+		  </select>
+                  <br>
+	       </form>
+	       <div id="list">
+                  
+	       </div><br>
+               
 	       <form method="post" action="teacherMain.php">
-	          <br>
-	          <input type="text" name="examName" class="textInput">
-	          <br>
-                  <p>Select questions for exam</p>
-	          <?php
-	             foreach (json_decode($result) as $question ){
+	          <?php	     
+	             foreach (json_decode($result) as $question=>$category ){
                         echo "<input type='checkbox' name='questionList[]'
 		        value='$question'> $question <br>";
 	             }

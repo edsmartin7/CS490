@@ -10,11 +10,16 @@
 }
 
 #qbox {
-   background-color: #90C3D4;
+   background-color: purple; /*#90C3D4;*/
+   color: white;
    float: top;
-   margin-right: 20px;
-   width: 140px;
-   border-right: 2px solid #000;
+   /*margin-right: 20px;*/
+   margin: auto;
+   width: 250px;
+   height: 50px;
+   /*border-right: 2px solid #000;*/
+   box-shadow: 10px 10px 5px #888888;
+   text-align: center;
 }
 
 #abox {
@@ -30,20 +35,23 @@
 
 #left {
    float: left;
-   width: 50%;
-   border: dashed;
+   width: 46%;
+   border: dashed purple; /*#90C3D4;*/
 }
-
+#selected {
+   width: 95%;
+}
 #right {
    float: right;
-   width: 50%;
-   border: dashed;
+   width: 46%;
+   border: dashed purple; /*#90C3D4;*/
 }
 .textInput {
-   height: 100px;
-   width: 300px;
+   height: 50px;
+   width: 200px;
 }
 
+/*
 @media screen and (max-width: 400px){
    #qbox{
       float: none;
@@ -53,7 +61,7 @@
       border-bottom: 2px solid #000;
    }
 }
-
+*/
 p {
    font-weight: bold;
 }

@@ -1,17 +1,18 @@
 
 function showTestDiv(){
-   document.getElementById('availableTests').style.display = "block";
-}
+   var div = document.getElementById('availableTests');
+   if(div.style.display === 'none')
+      div.style.display = 'block';
+   else
+      div.style.display = 'none';
 
-function hideTestDiv(){
-   //hide when form submitted
-   document.getElementById('availableTests').style.display = "none";
 }
 
 function showGradeDiv(){
-   document.getElementById('gradedTests').style.display = "block";
-}
-function hideGradeDiv(){
-   document.getElementById('gradedTests').style.display = "none";
+   var div = document.getElementById('gradedTests');
+   if(div.style.display === 'none')
+      div.style.display = 'block';
+   else
+      div.style.display = 'none';
 }
 

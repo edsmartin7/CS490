@@ -45,7 +45,7 @@
       
          //echo "\n";
          //echo $result;
-         if($result == 1){
+         if($result == 0){
             //session_destroy();//dont destroy until logout???
 	    header("Location:  https://web.njit.edu/~em244/CS490/View/studentMain.php");
 	    exit;

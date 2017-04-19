@@ -2,9 +2,10 @@
    <head>
       <title>Get to Work</title>
       <!-- <link rel="stylesheet" type="text/css" href="test.css"> -->
+      <link rel="stylesheet" type="text/css" href="student.css">
    </head>
    <body>
-      <div>
+      <div id="currenttest">
          <?php
 	    //GET all current test's questions
 	    $exam = $_GET['exam']; //'testhello';
