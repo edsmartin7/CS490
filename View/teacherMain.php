@@ -53,11 +53,31 @@
 	          <p>Chosen Questions</p>
                   <br>
 	          <?php
+		     /*
 		     foreach($_POST['questionList'] as $addQuestion)
 		        echo "<input type='checkbox' name='submitList[]'
                         value='$addQuestion'> $addQuestion <br>";
+                     */
+		     
+		     session_start();
+		     $savedQuestions = array();
+		     
+		     foreach($_POST['questionList'] as $addedQuestion){
+		        if(in_array($addedQuestion, $savedQuestions)){
+			   continue;
+			}else{
+			   array_push($savedQuestions, $addedQuestion);
+                        }
+                     }
+                     
+		     foreach($savedQuestions as $saved){
+		        echo "<input type='checkbox' name'submitList[]'
+			value='$saved'> $saved <br>";
+		     }
+		     
 	          ?>
-	          <input type="submit" value="Submit your exam">
+	          <!-- <input type="submit" value="Submit your exam"> -->
+		  <button type="submit" value="Submit your exam now">Submit</button>
 	          <!-- show selected questions -->
 	          <br>
 	          <button>Delete selected Question</button>
@@ -78,19 +98,21 @@
                   <br>
 	       </form>
 	       <div id="list">
-                  
+                 <!-- filled w/ javascript -->
 	       </div><br>
                
-	       <form method="post" action="teacherMain.php">
-	          <?php	     
+	       <!-- <form method="post" action="teacherMain.php">
+	          <?php
+		     /*
 	             foreach (json_decode($result) as $question=>$category ){
                         echo "<input type='checkbox' name='questionList[]'
 		        value='$question'> $question <br>";
 	             }
+		     */
 	          ?>
 	          <br>
                   <input type="submit" value="Add Question to Exam"> 
-	       </form>
+	       </form>-->
             </div>
          </div>
 
