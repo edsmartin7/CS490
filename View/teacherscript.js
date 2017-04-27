@@ -23,7 +23,7 @@ function addTests(){
    var input = document.createElement("div");
    //input.setAttribute("id", 'tests');
    input.id = 'tests'; 
-   input.innerHTML = "<input type='text' name='testCase[]' class='textInput' placeholder='Test Case'> <input type='text' name='testAnswer[]' class='textInput' placeholder='Test Answer'>";
+   input.innerHTML = "<input type='text' name='testCase[]' class='textInput' placeholder='Test Case'> <input type='text' name='testAnswer[]' class='textInput' placeholder='Test Solution'>";
    current.appendChild(input);
 }
 

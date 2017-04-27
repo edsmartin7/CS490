@@ -13,20 +13,25 @@
    $testAnswer = $_POST['tcAns'];
    $prof = $_POST['prof'];
 
+   $compile = fopen("AAAAAAA.txt", "w");
+   fwrite($compile, $prof);
+   fwrite($compile, $testCase);
+   fwrite($compile, $testAnswer);
+   /*
    //should be assoc arrays?
    $one = "1,2,3 | 4,5,6 | 7,8,9";
    $two = "12 | 34 | 56";
    $three = array('tests' => array("123", "456", "789"));
    $four = array('tests' => "1,2,3|4,5,6|7,8,9", 'answers'=>"987|654|321");
-   //$splitTests = explode("|", $one);
-   //$splitTests = array_map('trim', $splitTests);
-   //print_r($splitTests);
-   //foreach($three['tests'] as $value)
+   $splitTests = explode("|", $one);
+   $splitTests = array_map('trim', $splitTests);
+   print_r($splitTests);
+   foreach($three['tests'] as $value)
    //   echo "$value \n";
    foreach($four as $index) // => $test)
       echo $index;//$five[$test] = $four[$index];
    print_r($five);
-
+   */
    /*
    require_once('config.php');
    extract(dbConfig());
