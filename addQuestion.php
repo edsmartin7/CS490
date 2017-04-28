@@ -1,7 +1,6 @@
 <?php
 
    //Add a question to the question bank
-
    $difficulty = (int)$_POST['diff'];
    $category = $_POST['cat'];
    $question = $_POST['quest'];
@@ -12,27 +11,16 @@
    $testCase = $_POST['testCase'];
    $testAnswer = $_POST['tcAns'];
    $prof = $_POST['prof'];
-
-   $compile = fopen("AAAAAAA.txt", "w");
-   fwrite($compile, $prof);
-   fwrite($compile, $testCase);
-   fwrite($compile, $testAnswer);
-   /*
+   
    //should be assoc arrays?
-   $one = "1,2,3 | 4,5,6 | 7,8,9";
-   $two = "12 | 34 | 56";
-   $three = array('tests' => array("123", "456", "789"));
-   $four = array('tests' => "1,2,3|4,5,6|7,8,9", 'answers'=>"987|654|321");
+   $one = $testCase; //"1,2,3 | 4,5,6 | 7,8,9";
+   $two = $testAnswer; //"12 | 34 | 56";
    $splitTests = explode("|", $one);
    $splitTests = array_map('trim', $splitTests);
-   print_r($splitTests);
-   foreach($three['tests'] as $value)
-   //   echo "$value \n";
-   foreach($four as $index) // => $test)
-      echo $index;//$five[$test] = $four[$index];
-   print_r($five);
-   */
-   /*
+   $splitAnswers = explode("|", $two);
+   $splitAnswers = array_map('trim', $splitAnswers);
+
+   
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
@@ -43,15 +31,17 @@
       
    $result = $db->query($query); 
 
-      //for loop
+   //for loop
+   for($x=0; $x<count($splitTests); $x++){
       $tests = "INSERT INTO testcases (question, testcase, testanswer)
-                VALUES ('$question', '$testCase', '$testAnswer')";
+                VALUES ('$question', '$splitTests[$x]', '$splitAnswers[$x]')";
       $testresults = $db->query($tests);
+   }
 
    if($result){ 
       echo "QUESTION ADDED";
    }else{
       echo "ERROR IN QUERY";
    }
-   */ 
+    
 ?>

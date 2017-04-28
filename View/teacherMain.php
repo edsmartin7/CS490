@@ -52,11 +52,14 @@
 	    <br>
 	    <p>Chosen Questions</p>
             <br>
+	    <div id='temp'>
+	    <!-- ajax hopefully -->
+	    </div>
 	    <?php
 		     
               session_start();
               $savedQuestions = array();
-		     
+      
               foreach($_POST['questionList'] as $addedQuestion){
                 if(in_array($addedQuestion, $savedQuestions)){
                   continue;

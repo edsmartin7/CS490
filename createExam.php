@@ -6,14 +6,12 @@
    $examName = $_POST['examName'];
    $questions = $_POST['questions'];
    $points = $_POST['points'];
-   
-   
-   print_r($questions);
-   print_r($points);
-
-   $compile = fopen("Answer.java", "w");
-   fwrite($compile, $);
-   fwrite($compile, $answer);
+   //$prof = $_POST['prof'] ;  
+  
+   $questionArray = explode("|" , $questions);
+   $questionArray = array_map('trim', $questionArray);
+   $pointsArray = explode(",", $points);
+   $pointsArray = array_map('trim', $pointsArray);
 
    require_once('config.php');
    extract(dbConfig());
@@ -33,15 +31,15 @@
                     VALUES ('$examName', '$question')";
       $created = $db->query($insertion);
    }
-
-   for($x=0; $x<count($_POST['questions']); $x++){
-      $addpoints = "INSERT INTO examquestionchild (examName, question, points)
-                    VALUES ('$examName', '$questions[$x]', '$points[$x]' )";
+   */
+   for($x=0; $x<count($questionArray); $x++){
+      $addpoints = "INSERT INTO exams (examName, question, points)
+                    VALUES ('$examName', '$questionArray[$x]', '$pointsArray[$x]' )";
       $addresult = $db->query($addpoints);
    }
-   */
+   
 
-   if($created)
+   if($addresult)//($created)
       $message = "EXAM INSERTED\n";
    else
       $message = "FAILED TO STORE EXAM\n";
