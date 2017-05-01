@@ -4,8 +4,7 @@
 
    $username = $_POST['ucid'];
    $password = $_POST['pass'];
-   
-   
+      
    if(isset($_POST['ucid'],$_POST['pass'])){
       require_once('config.php');
       extract(dbConfig());
@@ -23,7 +22,6 @@
       }else{
          echo "NO ACCOUNT FOUND";
       }
-
    }
    
 ?>

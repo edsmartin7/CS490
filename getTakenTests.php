@@ -1,6 +1,7 @@
 <?php
 
-   //Returns all the Students taken tests
+   //Returns all of a Student's taken tests
+
    $studentName = $_POST['studentName'];
    
    require_once('config.php');
@@ -10,7 +11,6 @@
              WHERE student='$studentName'"; //parens?
       
    $result = $db->query($query); 
-   //$all = $result->fetch_assoc();
    
    while($row = $result->fetch_assoc()){
       foreach($row as $key=>$value){
@@ -19,10 +19,8 @@
       }
    }
    
-
    if($all){
       echo json_encode($all);
-      echo "\n";
    }else{
       echo "NOT ABLE TO FIND ANY TAKEN TESTS FOR THIS STUDENT\n";
    }

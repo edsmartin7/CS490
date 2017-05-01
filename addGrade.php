@@ -22,7 +22,6 @@
                    VALUES ('$exam', '$student')";
    $sent = $db->query($sendToTaken);
 
-
    if($result){
       echo "GRADE ADDED";
    }else{

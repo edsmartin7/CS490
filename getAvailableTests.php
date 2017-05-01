@@ -1,6 +1,6 @@
 <?php
 
-   //Display all the tests a student can take
+   //Display all the tests a student has taken and was released
 
    $student = $_POST['studentName'];
 

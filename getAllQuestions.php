@@ -18,7 +18,6 @@
 
    if($all){
       echo json_encode($all['question']);
-      echo "\n";
    }else{
       echo "NOT ABLE TO RETURN ALL THE QUESTIONS\n";
    }

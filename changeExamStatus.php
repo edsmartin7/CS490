@@ -4,10 +4,6 @@
 
    $studentName = $_POST['studentName'];
    $examName = $_POST['examName'];
-   //$studentName = 'oscar';
-   //$examName = 'Test01';
-   //$flag=1;
-   //if taken
 
    require_once('config.php');
    extract(dbConfig());
@@ -18,8 +14,7 @@
       
    $result = $db->query($query); 
    if($result){
-      echo "EXAM WAS UPDATED";
-      echo "\n";
+      echo "EXAM WAS UPDATED \n";
    }else{
       echo "NOT ABLE TO FIND ANY TAKEN TESTS FOR THIS STUDENT\n";
    }

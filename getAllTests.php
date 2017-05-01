@@ -1,13 +1,12 @@
 <?php
 
-   //Display each available test on student's main page
+   //Display every created exam on student's main page
 
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
    $query = "SELECT DISTINCT (examName)
-             FROM exams
-             ";
+             FROM exams";
       
    $result = $db->query($query); 
   
@@ -20,7 +19,6 @@
 
    if($all){
       echo json_encode($all['examName']);
-      echo "\n";
    }else{
       echo "NOT ABLE TO RETURN ALL THE EXAMS\n";
    }

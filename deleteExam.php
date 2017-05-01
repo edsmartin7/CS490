@@ -1,9 +1,9 @@
 <?php
 
-   $examName = $POST['exam'];
-   $examName = 
-   //$examName = 'JavaLavaTest';
+   //Delete an exam from the database
 
+   $examName = $POST['exam'];
+  
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
@@ -11,11 +11,11 @@
              WHERE examName='$examName'";
       
    $result = $db->query($query); 
-
+   
    if($result){ ///if($row){
-      echo "EXAM DELETED";
+      echo "EXAM DELETED \n";
    }else{
-      echo "ERROR IN QUERY";
+      echo "ERROR IN QUERY \n";
    }
    
 ?>

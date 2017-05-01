@@ -1,5 +1,7 @@
 <?php
 
+   //Delete a questions created by given professor
+
    $prof = $_POST['prof'];
 
    require_once('config.php');
@@ -10,7 +12,7 @@
       
    $result = $db->query($query); 
 
-   if($result){ ///if($row){
+   if($result){
       echo "QUESTION DELETED";
    }else{
       echo "ERROR IN QUERY";
