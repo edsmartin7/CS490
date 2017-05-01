@@ -2,7 +2,7 @@
 
    //Delete an exam from the database
 
-   $examName = $POST['exam'];
+   $examName = $_POST['exam'];
   
    require_once('config.php');
    extract(dbConfig());
