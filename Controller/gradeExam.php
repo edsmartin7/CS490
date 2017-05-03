@@ -1,24 +1,23 @@
 <?php
 
-//for every response: compile
-//if compile, then check syntax
-  
-  //receive exam and responses AND quesitons?
+   //Grade a single question
 
-  //get tests cases/answers
-  $url = "https://web.njit.edu/~em244/CS490/Model/...php";
-  $ch = curl_init($url);
-  $result = curl_exec($ch);
-  curl_close($ch);
+   //get questions and tests cases / runs per question
+   $url = "https://web.njit.edu/~em244/CS490/Model/getQuestionRow.php";
+   $ch = curl_init($url);
+   $result = curl_exec($ch);
+   curl_close($ch);
+   echo $result;
 
-
-
+   /*
    function compile(){
       $points = 0;
       //get question and test cases
       $tests = "1,2 | 3,4 | 5,6";
       $group = preg_split("/\|/", $tests);
       $single = preg_split("/,/", $group[0]);
+      $testAnswers = "3|7|11";
+      $testAnswers = preg_split("/\|/", $testAnswers); //answers[0] == 3
 
       //tell user to write a public static method
       $answer = "public static int add(int a, int b){ return a+b; }";
@@ -46,21 +45,18 @@
 
       exec('javac Answer.java');
       exec('java Answer', $output);
-      if($output) //if output and if output == testanswer
+      if($output){ //if output and if output == testanswer
          $points++;
-      else
+	 if($output[0] == $testAnswers[0])
+	    $points++;
+      }else{
          $output = shell_exec('javac Answer.java 2>&1 1> /dev/null');
+      }
 
-      echo "ANSWERzzz $output \n"; //print_r or echo $output[0] if compiles
-      
       exec('rm Answer.*');
       return $points;
    }
 
-   //if(compile($question) != 0){
-   //   syntax();
-   //}
-
    compile();
-   
+   */ 
 ?>

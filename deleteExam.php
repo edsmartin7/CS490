@@ -12,7 +12,7 @@
       
    $result = $db->query($query); 
    
-   if($result){ ///if($row){
+   if($result){
       echo "EXAM DELETED \n";
    }else{
       echo "ERROR IN QUERY \n";

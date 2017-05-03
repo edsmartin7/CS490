@@ -1,42 +1,31 @@
 <?php
 
+   //Give middle/controller all a single question's information for grading
+   $question = $_POST['question'];
+
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
-
-   //Get a list of questions/id's
-   //$exam = $_POST[''];
-   $exam = "testhello";
-   $questionList = "SELECT question FROM exams
-             WHERE examName='$exam'";
-
-   $result = $db->query($questionList);
-   $all = array();
-   while($row = $result->fetch_assoc()){
-      foreach($row as $value){
-	 array_push($all, $value);
-      }
-   }
-   //print_r($all);
-
-   //Get all info for selected test questions
+ 
+   $query = "SELECT * FROM testquestions
+             WHERE question='$question'";
+   $result = $db->query($query); 
+   $row = $result->fetch_assoc();
+  
+   $tests = "SELECT testcase, testanswer
+             FROM testcases
+	     WHERE question='$question'";
+   $testresult = $db->query($tests);
+   $row['tests'] = array();
    $x=0;
-   $questioninfo = array();
-   foreach($all as $question){
-      $query = "SELECT * FROM testquestions
-                WHERE prof='profx'"; //WHERE question='$question'";
-      $result = $db->query($query); 
-      $row = $result->fetch_assoc();
-      
-      $questioninfo[$x] = $row;
+   while($testrow = $testresult->fetch_assoc()){
+      $row['tests'][$x] = $testrow;
       $x++;
    }
-   //print_r($questioninfo);
-
-   
-   if($questioninfo){
-      echo json_encode($questioninfo);
-      echo "\n";
+   if($row){
+      //echo "<pre>";
+      echo json_encode($row);
+      //echo "<pre>";
    }else{
       echo "NOT ABLE TO RETURN ALL THE QUESTIONS\n";
    }

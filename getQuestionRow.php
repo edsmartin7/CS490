@@ -5,9 +5,7 @@
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
-
    $question = $_POST['question'];
-
    $query = "SELECT * FROM testquestions
              WHERE question='$question'";
    $result = $db->query($query); 
@@ -23,11 +21,8 @@
       $row['tests'][$x] = $testrow;
       $x++;
    }
-
    if($row){
-      //echo "<pre>";
       echo json_encode($row);
-      //echo "<pre>";
    }else{
       echo "NOT ABLE TO RETURN ALL THE QUESTIONS\n";
    }

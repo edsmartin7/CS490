@@ -7,7 +7,7 @@
       require_once('config.php');
       extract(dbConfig());
       $db = new mysqli($host, $user, $pw, $sqldb);
-      $query = "SELECT * FROM logins 
+      $query = "SELECT * FROM z_logins 
                 WHERE username='$username'
 		AND password='$password'";
       
