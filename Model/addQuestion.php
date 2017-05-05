@@ -2,22 +2,15 @@
 
    //Add a question to the question bank
 
-   $difficulty = (int)$_POST['difficulty']; //(int)$_POST['diff'];
-   $category = $_POST['category']; //$_POST['cat'];
-   $question = $_POST['question'];  //$_POST['quest'];
-   //$returnType = $_POST['returnType'];
-   //$methodName = $_POST['methodName'];
-   //$argumentName = $_POST['argName'];
-   //$argumentType = $_POST['argType'];
-   //$testCase = $_POST['testCase'];
-   //$testAnswer = $_POST['tcAns'];
-   //$prof = "eddie"; //$_POST['prof'];
+   $difficulty = (int)$_POST['difficulty']; 
+   $category = $_POST['category']; 
+   $question = $_POST['question'];  
   
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
    
-   $query = "INSERT INTO  z_questions (difficulty)
+   $query = "INSERT INTO  z_questions (difficulty, category, question)
              VALUES ('$difficulty', '$category', '$question')";
       
    $result = $db->query($query); 

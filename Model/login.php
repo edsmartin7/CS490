@@ -1,5 +1,7 @@
 <?php
 
+   //Check database for login info
+
    $username = $_POST['username'];
    $password = $_POST['password'];
    
@@ -16,8 +18,6 @@
        
 
       if($row){
-         //$results = array(1, $row['student']);
-	 //echo json_encode($row); //encode reuslts?
 	 echo $row['student'];
       }else{
          echo "NO ACCOUNT FOUND";

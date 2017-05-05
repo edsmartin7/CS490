@@ -12,9 +12,9 @@
    $db = new mysqli($host, $user, $pw, $sqldb);
    
    if($category == "all"){
-      $query = "SELECT * FROM questions";
+      $query = "SELECT * FROM z_questions";
    }else{
-      $query = "SELECT * FROM questions
+      $query = "SELECT * FROM z_questions
                 WHERE category='$category'";
    }
 

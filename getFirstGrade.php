@@ -2,7 +2,8 @@
 
    //Returns all the Students taken tests
    $studentName = $_POST['studentName'];
-   
+   //$studentName = 'oscar';
+
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);

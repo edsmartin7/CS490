@@ -14,7 +14,7 @@
    
    for($x=1; $x<count($exam); $x++){
       //only have to store the question id's then pull from question db table 
-      $insertion = "INSERT INTO exams (examName, question)
+      $insertion = "INSERT INTO z_exams (examName, question)
                     VALUES ('$exam[0]', '$exam[$x]')";
       $created = $db->query($insertion);   
    }
