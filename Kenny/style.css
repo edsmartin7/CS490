@@ -258,6 +258,7 @@ div.col {
 #left {
    float: left;
    width: 50%;
+   text-align: center;
 }
 
 #right {
@@ -266,3 +267,18 @@ div.col {
    text-align: center;
 }
 
+#selected {
+   background: white;
+   min-height: 200px;
+   border: 2px solid #000;
+   margin-left: 10px;
+   margin-right: 10px;
+}
+
+#list {
+   background: white;
+   min-height: 200px;
+   border: 2px solid #000;
+   margin-left: 10px;
+   margin-right: 10px;
+}

@@ -2,13 +2,13 @@
 
    //Filter questions
 
-   $category = $_POST['category'];
-   
+   $category = $_GET['category'];
+
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
    
-   if($category == ""){
+   if($category == "all"){
       $query = "SELECT * FROM testquestions";
    }else{
       $query = "SELECT * FROM testquestions

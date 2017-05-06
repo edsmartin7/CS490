@@ -21,10 +21,11 @@
 
   <body>
     <script src="script.js"></script>
+    
     <?php
        //create Test and run function to do so
        if(isset($_POST['create_test'])){
-          createTest(); //run php - send test
+          createTest();
           $_SESSION['message'] = "Test Created!";
           echo "<div id='blue_msg'>".$_SESSION['message']."</div>";
           unset($_SESSION['message']);
@@ -33,24 +34,45 @@
 
       <center>
         <font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </font><br>
+	<font color="white" size="6" face="verdana">Create Test</font></br>
       </center>
 
       <div id="left">
         <h1>Questions Added</h1>
-        <!-- fill with ajax js -->
+	<form method="post" action="prof_create_test.php" >
+	  <input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput" required>
+	  <br><br>
+	  <div id="selected">
+	  <!-- filled with js -->
+	  </div>
+          <br>
+	  <input type="submit" name="create_test" value="Submit Test">
+        </form>
+	<?php
+  
+           if(isset($_POST['examName'])){
+              $jsonData = array('examName'=>$_POST['examName'], 'submitList'=>array($_POST['submitList']),
+	      'pointsAssigned'=>array($_POST['pointsAssigned']));
+              //$jsonData = http_build_query($jsonData);
+              $url = "https://web.njit.edu/~em244/CS490/createExam.php";
+              $ch = curl_init($url);
+              $jsonData = json_encode($jsonData);
+              curl_setopt($ch, CURLOPT_POST, true);
+              curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+              curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+              $result = curl_exec($ch);
+              curl_close($ch);
+	   }
+           
+        ?>
       </div>
 
       <div id="right">
-        <h1>Create Test</h1>
-
-        <form method="post">
-          <input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput" required>
-          <br><br>
+        <h1>Select Questions</h1>
 
           <?php	
 
              //To Receive all Questions from question bank
-
              $url = "https://web.njit.edu/~or32/rc/receivealltasks.php";
              $ch = curl_init($url);	
              curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -60,105 +82,32 @@
 
           ?>	
 
-          <font color="white" size="3" face="verdana">Category:</font>
-          <select name="myCategory" onchange="filterQuestions(this.value)" id="myCategory" required>
-            <option value="nada">Please select ...</option>
-            <option value="array">Arrays</option>
-            <option value="loop">Loops</option>
-            <option value="method">Methods</option>
-            <option value="relational">Relational</option>
-            <option value="recursive">Recursive</option>		
-          </select>
-	  <br><br>
-	
-          <font color="white" size="3" face="verdana">Difficulty:</font>   <!-- tab space is &emsp; -->
+	  <font color="white" size="3" face="verdana">Category:</font>
+	  <form>
+            <select name="myCategory" onchange="filterQuestions(this.value)">
+              <option value="">Filter</option>
+	      <option value="all">All</option>
+              <!-- <option value="array">Arrays</option> -->
+              <option value="loop">Loops</option>
+              <option value="method">Methods</option>
+              <option value="relational">Relational</option>
+              <option value="recursive">Recursive</option>		
+            </select>
+	    <br>
+	  </form>
+          <!--	
+          <font color="white" size="3" face="verdana">Difficulty:</font>
           <select name="myDiff" id="myDiff" required>
             <option value="nada">Please select ...</option>
             <option value="0">Easy</option>
             <option value="1">Medium</option>
             <option value="2">Hard</option>
           </select>
-          <br><br>	
-
-          <?php
-             for ($i=0; $i<sizeof($resultz); $i++){	 //loop through questions from question bank
-                $j = $i + 1; 
-          ?>		
-            <form> <!-- form - display questions  from question bank in read-only text area  -->
-              <h2> QB Question <?php echo $j ?> </h2>
-              <input type='checkbox' name='questionList[]' value="<?php echo $resultz[$i]; ?>"> 
-              <textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
-              <!--Points assigned testing  -->
-              <input type="number" min="1" style="width: 60px" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
-              <br>
-	    </form>
-          <?php }  //for loop - curly brace?> 
-
-          <?php
-             //Add Test questions to X Test aka Create Test
-
-             function createTest() {
-                //OLD WAY - JSON data
-                /*
-                $jsonData[0] = $_POST['examName'];
-                 = 1;
-
-                foreach($_POST['questionList'] as $value){
-                   $jsonData[$x] = $value;
-                   $x++;
-                }
-                */
-
-                //Sending Questions
-                $q_arr = array();
-                foreach ($_POST['questionList'] as $qSelected){
-                   array_push($q_arr, $qSelected);
-                }
-
-                $realQuestions="";
-                foreach ($q_arr as $q){
-                   $realQuestions .= $q . '|';
-                } 
-                $realQuestions = trim($realQuestions, '|');
-
-                //Sending Points assigned to question
-                $pts_arr = array();
-                foreach ($_POST['pointsAssigned'] as $ptsInput){
-                   if ($ptsInput > 0){ 
-                      array_push($pts_arr, $ptsInput);
-                   }
-                }
-
-                $realPoints="";
-                foreach ($pts_arr as $pts){
-                   $realPoints .= $pts . ',';
-                } 
-                $realPoints = trim($realPoints, ',');
-
-		//JSON data
-		$jsonData = array(
-                   'prof' => $_SESSION['p_ucid'],
-                   'examName' => $_POST['examName'],
-                   'questions' => $realQuestions,
-                   'points' => $realPoints
-                ); 
-
-                $url = "http://afsaccess2.njit.edu/~or32/xr/sendexam.php";
-                $ch = curl_init($url);
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                $result = curl_exec($ch);
-                curl_close($ch);
-                $resultz = json_decode($result, 1);
-
-             }
-
-          ?>
-          <br>
-          <button type="submit" name="create_test" class="btn btn-block btn-primary" >Create Test</button></td>
           <br><br>
-        </form>
+          -->
+          <div id="list">
+            <!-- filled with js -->
+          </div><br>
       </div>
 
   </body>

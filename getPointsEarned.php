@@ -25,7 +25,7 @@
    }
    
    if($all){
-      echo json_encode($all);
+      echo json_encode($all['points']);
    }else{
       echo "NOT ABLE TO RETURN ALL THE STUDENT'S POINTS\n";
    }
