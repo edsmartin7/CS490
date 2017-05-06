@@ -1,8 +1,8 @@
 <?php
 
    //Returns all the Students taken tests
-   $studentName = $_POST['studentName'];
-   //$studentName = 'oscar';
+   //$studentName = $_POST['studentName'];
+   $studentName = 'em244';
 
    require_once('config.php');
    extract(dbConfig());

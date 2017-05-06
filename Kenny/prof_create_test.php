@@ -43,25 +43,29 @@
 	  <input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput" required>
 	  <br><br>
 	  <div id="selected">
-	  <!-- filled with js -->
+	    <!-- selected questions appear here-->
 	  </div>
           <br>
 	  <input type="submit" name="create_test" value="Submit Test">
         </form>
 	<?php
-  
-           if(isset($_POST['examName'])){
-              $jsonData = array('examName'=>$_POST['examName'], 'submitList'=>array($_POST['submitList']),
-	      'pointsAssigned'=>array($_POST['pointsAssigned']));
-              //$jsonData = http_build_query($jsonData);
-              $url = "https://web.njit.edu/~em244/CS490/createExam.php";
-              $ch = curl_init($url);
-              $jsonData = json_encode($jsonData);
-              curl_setopt($ch, CURLOPT_POST, true);
-              curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-              curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-              $result = curl_exec($ch);
-              curl_close($ch);
+           function createTest(){  
+              if(isset($_POST['examName'])){
+           
+	         $jsonData = array(
+	            'examName'=>$_POST['examName'], 
+		    'submitList'=>$_POST['submitList'],
+	            'pointsAssigned'=>$_POST['pointsAssigned']
+                 );
+                 $jsonData = http_build_query($jsonData);
+                 $url = "https://web.njit.edu/~em244/CS490/createExam.php";
+                 $ch = curl_init($url);
+                 curl_setopt($ch, CURLOPT_POST, true);
+                 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                 $result = curl_exec($ch);
+                 curl_close($ch);
+	      }
 	   }
            
         ?>
@@ -106,7 +110,7 @@
           <br><br>
           -->
           <div id="list">
-            <!-- filled with js -->
+            <!-- filtered questions appear here -->
           </div><br>
       </div>
 
