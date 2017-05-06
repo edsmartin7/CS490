@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>Hello Professor</title>
@@ -59,7 +58,7 @@
 		     
               session_start();
               $savedQuestions = array();
-      
+              /* 
               foreach($_POST['questionList'] as $addedQuestion){
                 if(in_array($addedQuestion, $savedQuestions)){
                   continue;
@@ -71,7 +70,8 @@
               foreach($savedQuestions as $saved){
                 echo "<input type='checkbox' name'submitList[]'
                   value='$saved'> $saved <br>";
-              }   
+              }
+	      */
 	    ?>
 
             <!-- <input type="submit" value="Submit your exam"> -->
@@ -87,10 +87,10 @@
             <select name="categories" onchange="filterQuestions(this.value)">
               <option value="">Filter:</option>
               <option value="all">ALL</option>
-              <option value="statement">Statement</option>
-              <option value="array">Array</option>
-              <option value="loop">Loop</option>
-              <option value="method">Method</option>
+              <option value="basic">Basics</option>
+              <option value="array">Arrays</option>
+              <option value="loop">Loops</option>
+              <option value="logic">Logic</option>
               <option value="math">Math</option>
             </select>
             <br>

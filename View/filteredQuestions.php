@@ -12,24 +12,14 @@
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
    $response = curl_exec($ch);
    curl_close($ch);
-   /*
-   echo "<form method='post' action='teacherMain.php'>";
+
+   echo "<form action='javascript:void%200' onsubmit='selectedQuestions(this)' />";
       foreach (json_decode($response) as $question ){
          echo "<input type='checkbox' name='questionList[]'
             value='$question'> $question <br>";
       }
-   //echo "<br>
-   //<input type='submit' value='Add Filtered to Exam'> 
-   //</form>";
    echo "<br>
-   <button onClick='addTestQuestions()'>Don't press this</button>
+   <button type='submit' >Don't press this</button>
    </form>";
-   */
-   foreach(json_decode($response) as $question){
-      echo "<input type='checkbox' name='questionList[]'
-         value='$question'> $question <br>";
-   }
-   echo "<br>
-   <button onClick='addTestQuestions(questionList[])'>Add Questions</button>";
-
+  
 ?>

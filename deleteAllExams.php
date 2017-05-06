@@ -3,22 +3,17 @@
    //Not for final
    //Functional:  Delete an exam (tables) from the database
 
-   //$examName = $_POST['exam'];
-   $examName = 'Real';
-
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
-   $query = "DELETE FROM exams
-             WHERE examName='$examName'";
+
+   $query = "DELETE FROM exams";
    $result = $db->query($query); 
 
-   $queryTwo = "DELETE FROM graded_student_exams
-                WHERE exam='$examName'";
+   $queryTwo = "DELETE FROM graded_student_exams";
    $resultTwo = $db->query($queryTwo);
 
-   $queryThree = "DELETE FROM taken_tests
-                  WHERE examName='$examName'";
+   $queryThree = "DELETE FROM taken_tests";
    $resultThree = $db->query($queryThree);
 
    if($result){

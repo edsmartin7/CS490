@@ -1,6 +1,8 @@
 <?php
 
-   //Grade a single question
+   //Grade a single question //return single grade and errors 
+   $_POST['question'];
+
 
    //get questions and tests cases / runs per question
    $url = "https://web.njit.edu/~em244/CS490/Model/getQuestionRow.php";
