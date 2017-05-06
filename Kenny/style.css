@@ -255,3 +255,14 @@ div.col {
     width: 25%;
 }
 
+#left {
+   float: left;
+   width: 50%;
+}
+
+#right {
+   float: right;
+   width: 50%;
+   text-align: center;
+}
+

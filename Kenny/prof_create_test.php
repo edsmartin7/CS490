@@ -20,17 +20,27 @@
   </head>
 
   <body>
+    <script src="script.js"></script>
     <?php
        //create Test and run function to do so
-       if ( isset($_POST['create_test']) ) {
+       if(isset($_POST['create_test'])){
           createTest(); //run php - send test
           $_SESSION['message'] = "Test Created!";
           echo "<div id='blue_msg'>".$_SESSION['message']."</div>";
           unset($_SESSION['message']);
        }
     ?>
-      <center> 
+
+      <center>
         <font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </font><br>
+      </center>
+
+      <div id="left">
+        <h1>Questions Added</h1>
+        <!-- fill with ajax js -->
+      </div>
+
+      <div id="right">
         <h1>Create Test</h1>
 
         <form method="post">
@@ -38,25 +48,20 @@
           <br><br>
 
           <?php	
+
              //To Receive all Questions from question bank
 
-             //MID URL
              $url = "https://web.njit.edu/~or32/rc/receivealltasks.php";
-             //initiate cURL
              $ch = curl_init($url);	
-             //returns $url stuff
              curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-             //Execute the request
              $result = curl_exec($ch);
-             //close cURL 
              curl_close($ch);
-	     //echo gettype ( $result );		//get var type 
-             $resultz = json_decode($result, 1);	//json decode
+             $resultz = json_decode($result, 1);
 
           ?>	
-          <!-- Category options -->
+
           <font color="white" size="3" face="verdana">Category:</font>
-          <select name="myCategory" id="myCategory" required>
+          <select name="myCategory" onchange="filterQuestions(this.value)" id="myCategory" required>
             <option value="nada">Please select ...</option>
             <option value="array">Arrays</option>
             <option value="loop">Loops</option>
@@ -65,7 +70,7 @@
             <option value="recursive">Recursive</option>		
           </select>
 	  <br><br>
-	  <!-- Diff options -->
+	
           <font color="white" size="3" face="verdana">Difficulty:</font>   <!-- tab space is &emsp; -->
           <select name="myDiff" id="myDiff" required>
             <option value="nada">Please select ...</option>
@@ -80,13 +85,13 @@
                 $j = $i + 1; 
           ?>		
             <form> <!-- form - display questions  from question bank in read-only text area  -->
-              <center>
-                <h2> QB Question <?php echo $j ?> </h2>
-                <input type='checkbox' name='questionList[]' value="<?php echo $resultz[$i]; ?>"> 
-                <textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
-                <!--Points assigned testing  -->
-                <input type="number" min="1" style="width: 60px" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
-                <br>
+              <h2> QB Question <?php echo $j ?> </h2>
+              <input type='checkbox' name='questionList[]' value="<?php echo $resultz[$i]; ?>"> 
+              <textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
+              <!--Points assigned testing  -->
+              <input type="number" min="1" style="width: 60px" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
+              <br>
+	    </form>
           <?php }  //for loop - curly brace?> 
 
           <?php
@@ -96,7 +101,7 @@
                 //OLD WAY - JSON data
                 /*
                 $jsonData[0] = $_POST['examName'];
-                $x = 1;
+                 = 1;
 
                 foreach($_POST['questionList'] as $value){
                    $jsonData[$x] = $value;
@@ -104,7 +109,7 @@
                 }
                 */
 
-                //-------------------Sending Questions --------------------------
+                //Sending Questions
                 $q_arr = array();
                 foreach ($_POST['questionList'] as $qSelected){
                    array_push($q_arr, $qSelected);
@@ -116,7 +121,7 @@
                 } 
                 $realQuestions = trim($realQuestions, '|');
 
-                //-------------------Sending Points assigned to question---------------
+                //Sending Points assigned to question
                 $pts_arr = array();
                 foreach ($_POST['pointsAssigned'] as $ptsInput){
                    if ($ptsInput > 0){ 
@@ -138,45 +143,23 @@
                    'points' => $realPoints
                 ); 
 
-		/*
-                print('<pre>');
-                print_r ($jsonData); //display my stuff
-                print('</pre>');  	
-                */
-
-                //MID URL
-                //$url = "https://web.njit.edu/~or32/xr/sendexam.php";
                 $url = "http://afsaccess2.njit.edu/~or32/xr/sendexam.php";
-                //initiate cURL
                 $ch = curl_init($url);
-                //Tell cURL that we want to send a POST request
                 curl_setopt($ch, CURLOPT_POST, true);
-                //Attach our encoded JSON string to the POST fields
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-                //returns $url stuff
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                //Execute the request
                 $result = curl_exec($ch);
-                //close cURL 
                 curl_close($ch);
-		
-                //echo gettype ( $result );		//get var type 
-                $resultz = json_decode($result, 1);	//json decode
-                //display resultz - json array
-                //print('<pre>');
-                //print_r ($resultz);
-                //print('</pre>');
+                $resultz = json_decode($result, 1);
 
              }
 
           ?>
-
-        <br>
-        <button type="submit" name="create_test" class="btn btn-block btn-primary" >Create Test</button></td>
-        <br>
-        <br>
-      </center>
-    </form>
+          <br>
+          <button type="submit" name="create_test" class="btn btn-block btn-primary" >Create Test</button></td>
+          <br><br>
+        </form>
+      </div>
 
   </body>
 </html>
