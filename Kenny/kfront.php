@@ -29,8 +29,8 @@ session_start();
 <head>
 	<meta charset="UTF-8">
 	<title>CS490 Proj</title>
-	<!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="login.css">
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 
 <?php
 //if(isset($_POST['ucid_input']) && isset($_POST['password_input'])){
