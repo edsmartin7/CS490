@@ -61,8 +61,8 @@ include 'studentSession.php';
 	//$url = "https://web.njit.edu/~or32/xr/sendstudentanswers.php";
 	//$url = "https://web.njit.edu/~em244/CS490/Model/getGradedAnswers.php";
 	
-	$url = "http://afsaccess2.njit.edu/~or32/xr/sendstudentanswers.php";
-
+	//$url = "http://afsaccess2.njit.edu/~or32/xr/sendstudentanswers.php";
+        $url = "https://web.njit.edu/~em244/CS490/Oscar/sendstudentanswers.php";
 
 	//initiate cURL
 	$ch = curl_init($url);

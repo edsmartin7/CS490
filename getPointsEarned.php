@@ -2,8 +2,8 @@
 
    //Get a student's points info
 
-   $student = $_POST['student'];
-   $exam = $_POST['exam'];
+   $student = 'em244';//$_POST['student'];
+   $exam =  'mytest';//$_POST['exam'];
 
    require_once('config.php');
    extract(dbConfig());
