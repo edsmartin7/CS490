@@ -2,8 +2,8 @@
 
    //Get a student's points info
 
-   $student = 'em244';//$_POST['student'];
-   $exam =  'mytest';//$_POST['exam'];
+   $student = $_POST['student']; //'kenny'
+   $exam =  $_POST['exam'];  //'mytest'
 
    require_once('config.php');
    extract(dbConfig());
@@ -14,7 +14,7 @@
 	     AND exam='$exam'";
 
    $result = $db->query($query); 
-   $row = $result->fetch_assoc();
+   //$row = $result->fetch_assoc();
   
    while($row = $result->fetch_assoc()){
       foreach($row as $key=>$value){
@@ -26,6 +26,7 @@
    
    if($all){
       echo json_encode($all['points']);
+      //echo json_encode($all) . "\n";
    }else{
       echo "NOT ABLE TO RETURN ALL THE STUDENT'S POINTS\n";
    }
