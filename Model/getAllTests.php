@@ -5,9 +5,8 @@
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
-   $query = "SELECT DISTINCT (examName)
-             FROM exams
-             ";
+   $query = "SELECT DISTINCT (exam)
+             FROM z_exams";
       
    $result = $db->query($query); 
   
@@ -19,7 +18,7 @@
    }
 
    if($all){
-      echo json_encode($all['examName']);
+      echo json_encode($all['exam']);
       echo "\n";
    }else{
       echo "NOT ABLE TO RETURN ALL THE EXAMS\n";

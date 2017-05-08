@@ -2,16 +2,13 @@
 
    $exam = $_POST['exam'];
    
-
    require_once('config.php');
    extract(dbConfig());
    $db = new mysqli($host, $user, $pw, $sqldb);
-   $query = "SELECT * FROM exams
-             WHERE examName = '$exam'";
-      
+   $query = "SELECT * FROM z_exams
+             WHERE exam='$exam'";     
    $result = $db->query($query); 
-   //$row = $result->fetch_assoc(); 
-   
+    
    while($row = $result->fetch_assoc()){
       foreach($row as $key=>$value){
          if(!isset($all[$key])) $all[$key] = array();
@@ -19,9 +16,6 @@
       }
    }
    
- 
-   //print_r($all['question']);
-
    if($all){
       echo json_encode($all['question']);
    }else{

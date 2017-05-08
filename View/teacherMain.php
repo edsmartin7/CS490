@@ -47,37 +47,13 @@
           <p>Name your Exam</p>
 	  <form method="post" action="sendTest.php">
             <br>
-            <input type="text" name="examName" class="textInput">
-	    <br>
-	    <p>Chosen Questions</p>
-            <br>
-	    <div id='temp'>
-	    <!-- ajax hopefully -->
+            <input type="text" name="examName" class="textInput"><br>
+	    <p>Chosen Questions</p><br>
+	    <div id='selected'>
+	       <!-- ajax hopefully -->
 	    </div>
-	    <?php
-		     
-              session_start();
-              $savedQuestions = array();
-              /* 
-              foreach($_POST['questionList'] as $addedQuestion){
-                if(in_array($addedQuestion, $savedQuestions)){
-                  continue;
-                }else{
-                  array_push($savedQuestions, $addedQuestion);
-                }
-              }
-      
-              foreach($savedQuestions as $saved){
-                echo "<input type='checkbox' name'submitList[]'
-                  value='$saved'> $saved <br>";
-              }
-	      */
-	    ?>
-
             <!-- <input type="submit" value="Submit your exam"> -->
-            <button type="submit" value="Submit your exam now">Submit</button>
-            <!-- show selected questions -->
-            <br>
+            <button type="submit" value="Submit your exam now">Submit</button><br>
             <button>Delete selected Question</button>
           </form>
         </div>

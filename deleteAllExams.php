@@ -16,6 +16,9 @@
    $queryThree = "DELETE FROM taken_tests";
    $resultThree = $db->query($queryThree);
 
+   $queryFour = "DELETE FROM points_earned";
+   $resultFour = $db->query($queryFour);
+
    if($result){
       echo "EXAM DELETED \n";
    }else{
